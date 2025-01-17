@@ -1,14 +1,15 @@
 const express= require("express")
 const nameRouter =require("./routers/name")
 const bodyParser = require("body-parser")
-const cors = require("cors")
 const app = express()
+const cors = require('cors');
+app.use(cors());
 
-app.use(cors({origin:"http://localhost:3000"}))
 
-app.use(bodyParser.json())
+app.use(express.json())
 
 app.use("/name", nameRouter)
+
 
 app.get("/", (req, res) => {
     res.json({ message: "Hello World." });
